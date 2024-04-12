@@ -1,0 +1,31 @@
+<div class="flex justify-center">
+  <mat-card class="card bg-cyan-100 w-full">
+    <mat-card-header>
+      <mat-card-title>{{ user?.name }} {{ user?.lastName }} </mat-card-title>
+      <mat-card-subtitle>
+        <mat-icon>alternate_email</mat-icon>{{ user?.email }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p><span class="font-bold">Area of Interest: </span>
+        @if (user?.areaOfInterest) {
+          {{ user?.areaOfInterest }}
+        } @else {
+          <span class="italic">Area of Interest Not Provided Yet</span>
+        }
+      </p>
+    </mat-card-content>
+    <mat-card-content>
+      <p><span class="font-bold">Biography: </span>
+        @if (user?.bio) {
+          {{ user?.bio }}
+        } @else {
+          <span class="italic">Biography Not Provided Yet</span>
+        }
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <a class="rounded-lg border-2 border-blue-700 px-2 py-1 bg-blue-300" [routerLink]="['edit']">Edit</a>
+    </mat-card-actions>
+  </mat-card>
+</div>

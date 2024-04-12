@@ -1,0 +1,35 @@
+<app-base-form
+  header="Login" redirectText="Not Registered Yet?" redirectLinkText="Register" redirectLink="/register"
+>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="w-full">
+      <mat-label for="email">Email</mat-label>
+      <input matInput formControlName="email" id="email" placeholder="johndoe@mail.com" type="email">
+      @if (loginForm.controls.email.hasError('required')) {
+        <mat-error>Email is <strong>required</strong></mat-error>
+      }
+      @if (loginForm.controls.email.hasError('email')) {
+        <mat-error>The email must follow the format: <strong>jonhdoe&#64;mail.com</strong></mat-error>
+      }
+      @if (loginForm.controls.email.hasError('notFound')) {
+        <mat-error>The email <strong>{{ this.loginForm.value.email }}</strong> was not found</mat-error>
+      }
+      @if (loginForm.controls.email.hasError('unauthorized')) {
+        <mat-error>Wrong <strong>email</strong> or <strong>password</strong></mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="w-full mt-2">
+      <mat-label for="password">Password</mat-label>
+      <input matInput formControlName="password" id="password" placeholder="Password" type="password">
+      @if (loginForm.controls.email.hasError('required')) {
+        <mat-error>Password is <strong>required</strong></mat-error>
+      }
+      @if (loginForm.controls.password.hasError('unauthorized')) {
+        <mat-error>Wrong <strong>email</strong> or <strong>password</strong></mat-error>
+      }
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" class="float-right" type="submit">Login</button>
+  </form>
+</app-base-form>

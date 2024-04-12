@@ -1,0 +1,47 @@
+<nav class="bg-gray-800 border-gray-200 px-4 px-6 py-2.5">
+  <div class="flex justify-between items-center mx-auto max-w-screen-xl">
+    <a [routerLink]="['/']" class="flex items-center">
+      <img [src]="backendUrl + '/public/app-logo.jpg'" class="mr-3 h-6 sm:h-9" alt="App Logo" />
+    </a>
+    <div class="flex items-center order-2">
+      @if (isLoggedin) {
+        <a routerLink="/profile">
+          <img class="rounded-full w-10" [src]="user?.profilePictureUrl">
+        </a>
+        <button mat-icon-button [matMenuTriggerFor]="menu" class="text-white" aria-label="Example icon-button with a menu">
+          <mat-icon class="text-white">more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <a routerLink="/profile">
+              <mat-icon>person_pin</mat-icon>
+              <span>Profile</span>
+            </a>
+          </button>
+          <button mat-menu-item>
+            <a routerLink="/wishlist">
+              <mat-icon>notes</mat-icon>
+              <span>Wishlist</span>
+            </a>
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      }
+    </div>
+    <div class="justify-between items-center w-full flex w-auto order-1">
+      @if (isLoggedin) {
+        <ul class="flex flex-row mt-4 font-medium flex-row space-x-8 mt-0">
+          <li>
+            <a [routerLink]="['/products']" routerLinkActive="underline" class="text-white block py-2 pr-4 pl-3 rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 hover:text-white">Products</a>
+          </li>
+          <li>
+            <a [routerLink]="['/cart']" routerLinkActive="underline" class="text-white block py-2 pr-4 pl-3 rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 hover:text-white">Cart</a>
+          </li>
+        </ul>
+      }
+    </div>
+  </div>
+</nav>

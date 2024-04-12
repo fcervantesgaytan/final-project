@@ -1,0 +1,17 @@
+<mat-card class="m-2">
+  <div class="flex flex-row">
+    <div class="rounded-full hover:cursor-pointer">
+      <img mat-card-image height="100" width="100" [src]="backendUrl + '/' + product.image" [alt]="product.image">
+    </div>
+    <div class="flex flex-row justify-between w-full m-4">
+      <div class="flex flex-col">
+        <span class="font-bold">{{ product.name }}</span>
+        <div class="flex flex-row">
+          <button mat-flat-button class="m-4" color="warn" (click)="deleteFromWishList()">Delete</button>
+          <button mat-flat-button class="m-4" color="primary" (click)="addToWishList()">Add to Cart</button>
+        </div>
+      </div>
+      <span class="italic">{{ product.price | currency: 'USD' }}</span>
+    </div>
+  </div>
+</mat-card>

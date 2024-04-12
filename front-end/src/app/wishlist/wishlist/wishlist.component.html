@@ -1,0 +1,3 @@
+@for (product of wishListedProducts; track product.id) {
+  <app-product-wishlist (deletedEventEmitter)="onDeletedEvent()"  [product]="product" />
+}

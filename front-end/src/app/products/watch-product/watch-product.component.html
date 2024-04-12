@@ -1,0 +1,35 @@
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <mat-card>
+    <mat-card-content>
+      <div class="flex flex-col lg:flex-row">
+        <div class="ml-4 mr-4 flex flex-col text-center">
+          <mat-card-title>{{ product.name }}</mat-card-title>
+          <img height="300" width="300" [src]="product.image">
+        </div>
+        <div class="flex flex-col w-full">
+          <div class="ml-4 mr-4 flex flex-row">
+            @if (product.totalProductsInventory !== 0) {
+              <button matTooltip="Add to Cart" (click)="addToCart()">
+                <mat-icon>add_shopping_cart</mat-icon>
+              </button>
+            } @else {
+              <button class="opacity-25 hover:cursor-not-allowed" matTooltip="Out of Stock">
+                <mat-icon>add_shopping_cart</mat-icon>
+              </button>
+            }
+            <button class="ml-4" matTooltip="Add to Wishlist" (click)="addToWishList()">
+              <mat-icon>notes</mat-icon>
+            </button>
+          </div>
+          <div class="ml-4 mr-4 p-2 flex w-full flex-col border border-2 rounded-md border-black h-full w-full">
+            <div class="flex flex-row">
+              <p class="text-red-600"><span class="font-bold text-black">Price: </span>{{ product.price | currency: 'USD' }}</p>
+              <p class="ml-4"><span class="font-bold">Available: </span>{{ product.totalProductsInventory }}</p>
+            </div>
+            <p><span class="font-bold">Description: </span>{{ product.description }}</p>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

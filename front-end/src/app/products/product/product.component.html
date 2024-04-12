@@ -1,0 +1,26 @@
+<mat-card class="m-4">
+  <div class="rounded-full hover:cursor-pointer" (click)="openProductModal()">
+    <img mat-card-image [src]="backEndUrl + '/' + product.image" [alt]="product.image">
+  </div>
+  <mat-card-content>
+    <p class="text-center">
+      <span class="font-bold">{{ product.name }}</span>
+      <br>
+      <span class="text-red-600">{{ product.price | currency: 'USD' }}</span>
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    @if (product.totalProductsInventory !== 0) {
+      <button matTooltip="Add to Cart" (click)="addToCart()">
+        <mat-icon>add_shopping_cart</mat-icon>
+      </button>
+    } @else {
+      <button class="opacity-25 hover:cursor-not-allowed" matTooltip="Out of Stock">
+        <mat-icon>add_shopping_cart</mat-icon>
+      </button>
+    }
+    <button class="ml-4" (click)="addToWishList()" matTooltip="Add to Wishlist">
+      <mat-icon>notes</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

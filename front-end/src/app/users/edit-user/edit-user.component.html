@@ -1,0 +1,35 @@
+<div class="container mx-auto w-3/4">
+  <form [formGroup]="updateUserForm" (ngSubmit)="onSubmitUpdate()">
+    <div class="flex flex-col">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input readonly matInput formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input readonly matInput formControlName="lastName">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Area of Intereset</mat-label>
+        <textarea matInput formControlName="areaOfInterest"></textarea>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Biography</mat-label>
+        <textarea matInput formControlName="bio"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button type="submit" class="mr-4" color="primary" mat-flat-button>&nbsp;Save&nbsp;</button>
+      <button class="mr-4" color="warn" mat-flat-button><a [routerLink]="['..']">Cancel</a></button>
+    </div>
+  </form>
+</div>

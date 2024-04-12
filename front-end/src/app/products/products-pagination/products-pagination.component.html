@@ -1,0 +1,23 @@
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  @defer {
+    <mat-card>
+      <mat-form-field class="m-4">
+        <mat-label>Search</mat-label>
+        <input matInput placeholder="Search" [(ngModel)]="search" (input)="onChangeSearch()">
+      </mat-form-field>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3">
+        @for (product of products; track product.id) {
+          <app-product [product]="product" />
+        }
+      </div>
+
+      <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700 m-4">
+      <mat-paginator [length]="totalProducts" [pageSize]="pageSize" [pageSizeOptions]="[6, 12, 18, 20]" (page)="handlePageEvent($event)" aria-label="Select page"/>
+    </mat-card>
+  } @placeholder (minimum 500ms) {
+    <div class="flex justify-center">
+      <mat-spinner />
+    </div>
+  }
+</div>

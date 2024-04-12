@@ -1,0 +1,15 @@
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  @for (product of products; track product.id) {
+    <app-product-cart [product]="product" />
+  }
+
+  <div class="m-4">
+    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+    <div class="flex flex-row float-right">
+      @if (products.length > 0) {
+        <button mat-flat-button class="mr-2" color="primary" (click)="placeOrder()">Place Order</button>
+      }
+      <p class="font-bold">Total: <span class="font-normal">{{ fullPrice | currency: 'USD' }}</span></p>
+    </div>
+  </div>
+</div>
